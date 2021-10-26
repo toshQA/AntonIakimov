@@ -1,15 +1,24 @@
 package com.epam.tc.hw1;
 
-import org.testng.Assert;
-import com.epam.tat.module4.Calculator;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class CalcSumTest extends CalculatorBaseTest {
+public class CalcSubtractTest extends CalculatorBaseTest {
 
-    @Test
-    public void sumTest() {
-        Calculator calculator = new Calculator();
-        double actual = calculator.sum(2, 5);
-        Assert.assertEquals(actual, 7);
+    @DataProvider
+    public Object[][] subtractDataProvider() {
+        return new Object[][] {
+            {3, 2, 1},
+            {10, 5, 5},
+            {300, 120, 180}
+        };
+    }
+
+    @Test(dataProvider = "subtractDataProvider")
+    public void subtractTest(double a, double b, double expected) {
+        double actual = calculator.sub(a, b);
+        assertThat(actual).isEqualTo(expected);
     }
 }
