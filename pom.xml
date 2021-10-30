@@ -24,26 +24,6 @@
         <assertj.version>3.21.0</assertj.version>
     </properties>
 
-    <profiles>
-        <profile>
-            <id>hm1-all-calculator-test-suite</id>
-            <properties>
-                <suite.xml.mame>${project.basedir}/src/test/resources/com.epam.tc.hw1/AllCalculatorTestSuite.xml</suite.xml.mame>
-            </properties>
-        </profile>
-        <profile>
-            <id>hm1-sum-subtract-calculator-test-suite</id>
-            <properties>
-                <suite.xml.mame>${project.basedir}/src/test/resources/com.epam.tc.hw1/SumAndSubtractCalculatorTestSuite.xml</suite.xml.mame>
-            </properties>
-        </profile>
-        <profile>
-            <id>hm1-multiply-divide-calculator-test-suite</id>
-            <properties>
-                <suite.xml.mame>${project.basedir}/src/test/resources/com.epam.tc.hw1/MultiplyAndDivideCalculatorTestSuite.xml</suite.xml.mame>
-            </properties>
-        </profile>
-    </profiles>
 
     <dependencies>
         <dependency>
@@ -111,12 +91,35 @@
                 <version>${maven-surefire.version}</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>${project.basedir}/src/test/resources/com.epam.tc.hw1/SumAndSubtractCalculatorTestSuite.xml</suiteXmlFile>
+                        <suiteXmlFile>${project.basedir}/src/test/resources/com.epam.tc.hw1/${suite.xml.name}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>hm1-all-calculator-test-suite</id>
+            <properties>
+                <suite.xml.name>AllCalculatorTestSuite.xml</suite.xml.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>hm1-sum-subtract-calculator-test-suite</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml.name>SumAndSubtractCalculatorTestSuite.xml</suite.xml.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>hm1-multiply-divide-calculator-test-suite</id>
+            <properties>
+                <suite.xml.name>MultiplyAndDivideCalculatorTestSuite.xml</suite.xml.name>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>
