@@ -90,7 +90,7 @@
                 <version>${maven-surefire.version}</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>${project.basedir}/src/test/java/com/epam/tc/hw2/${suite.xml.name}</suiteXmlFile>
+                        <suiteXmlFile>${project.basedir}/src/test/resources/com.epam.tc.hw2/${suite.xml.name}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>

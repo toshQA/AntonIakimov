@@ -5,11 +5,8 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 public class Exercise1 extends BaseTest {
-
-    SoftAssert softAssert = new SoftAssert();
 
     @Test
     public void excercise1() {
