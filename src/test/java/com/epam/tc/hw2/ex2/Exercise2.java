@@ -1,6 +1,7 @@
 package com.epam.tc.hw2.ex2;
 
 import com.epam.tc.hw2.BaseTest;
+import com.epam.tc.hw2.TestProperties;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -11,18 +12,16 @@ public class Exercise2 extends BaseTest {
     @Test
     public void exercise2() {
         // 1. Open test site by URL
-        String expectedURL = "https://jdi-testing.github.io/jdi-light/index.html";
-        webDriver.navigate().to(expectedURL);
         String actualURL = webDriver.getCurrentUrl();
-        softAssert.assertEquals(actualURL, expectedURL);
+        softAssert.assertEquals(actualURL, TestProperties.getTestProperties().getProperty("homePageURL"));
 
         // 2. Assert Browser title
         softAssert.assertTrue(webDriver.getTitle().contains("Home Page"));
 
         // 3. Perform login
         webDriver.findElement(By.id("user-icon")).click();
-        webDriver.findElement(By.id("name")).sendKeys("Roman");
-        webDriver.findElement(By.id("password")).sendKeys("Jdi1234");
+        webDriver.findElement(By.id("name")).sendKeys(TestProperties.getTestProperties().getProperty("login"));
+        webDriver.findElement(By.id("password")).sendKeys(TestProperties.getTestProperties().getProperty("password"));
         webDriver.findElement(By.id("login-button")).click();
 
         // 4. Assert Username is loggined
@@ -31,8 +30,8 @@ public class Exercise2 extends BaseTest {
         // 5. Open through the header menu Service -> Different Elements Page
         webDriver.findElement(By.linkText("SERVICE")).click();
         webDriver.findElement(By.linkText("DIFFERENT ELEMENTS")).click();
-        String expectedDiffetentElementsPageURL = "https://jdi-testing.github.io/jdi-light/different-elements.html";
-        softAssert.assertEquals(webDriver.getCurrentUrl(), expectedDiffetentElementsPageURL);
+        softAssert.assertEquals(webDriver.getCurrentUrl(),
+            TestProperties.getTestProperties().getProperty("differentElementsPageURL"));
 
         // 6. Select checkboxes
         webDriver.findElement(By.xpath("//label[contains(., 'Water')]/input")).click();
