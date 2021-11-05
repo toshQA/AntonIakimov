@@ -4,7 +4,7 @@ import java.util.List;
 
 public class DataClass {
 
-    public static final List<String> expectedHeaderNavBarItemTexts = List.of(
+    public static final List<String> EXPECTED_HEADER_NAV_BAR_ITEM_TEXTS = List.of(
         "HOME",
         "CONTACT FORM",
         "SERVICE",
@@ -12,7 +12,7 @@ public class DataClass {
     );
 
 
-    public static final List<String> expectedTextsUnderTheImages = List.of(
+    public static final List<String> EXPECTED_TEXTS_UNDER_THE_IMAGES = List.of(
         "To include good practices\n"
             + "and ideas from successful\n"
             + "EPAM project",
@@ -25,7 +25,7 @@ public class DataClass {
             + "wish to get more…"
     );
 
-    public static final List<String> expectedSideNavBarItemTexts = List.of(
+    public static final List<String> EXPECTED_SIDE_NAV_BAR_ITEM_TEXTS = List.of(
         "Home",
         "Contact form",
         "Service",

@@ -12,20 +12,13 @@ public class Exercise2 extends BaseTest {
     @Test
     public void exercise2() {
         // 1. Open test site by URL
-        String actualURL = webDriver.getCurrentUrl();
-        softAssert.assertEquals(actualURL, TestProperties.getTestProperties().getProperty("homePageURL"));
+        assertHomePageURL();
 
         // 2. Assert Browser title
-        softAssert.assertTrue(webDriver.getTitle().contains("Home Page"));
+        assertHomePageTitle();
 
-        // 3. Perform login
-        webDriver.findElement(By.id("user-icon")).click();
-        webDriver.findElement(By.id("name")).sendKeys(TestProperties.getTestProperties().getProperty("login"));
-        webDriver.findElement(By.id("password")).sendKeys(TestProperties.getTestProperties().getProperty("password"));
-        webDriver.findElement(By.id("login-button")).click();
-
-        // 4. Assert Username is loggined
-        softAssert.assertEquals(webDriver.findElement(By.id("user-name")).getText(), "ROMAN IOVLEV");
+        // 3, 4. Perform login and assert Username is loggined
+        assertUserIsLoggined();
 
         // 5. Open through the header menu Service -> Different Elements Page
         webDriver.findElement(By.linkText("SERVICE")).click();

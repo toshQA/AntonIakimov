@@ -2,6 +2,7 @@ package com.epam.tc.hw2;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -28,4 +29,23 @@ public class BaseTest {
     public void tearDown() {
         webDriver.quit();
     }
+
+    protected void assertHomePageURL() {
+        String actualURL = webDriver.getCurrentUrl();
+        softAssert.assertEquals(actualURL, TestProperties.getTestProperties().getProperty("homePageURL"));
+    }
+
+    protected void assertHomePageTitle() {
+        softAssert.assertTrue(webDriver.getTitle().contains("Home Page"));
+    }
+
+    protected void assertUserIsLoggined() {
+        webDriver.findElement(By.id("user-icon")).click();
+        webDriver.findElement(By.id("name")).sendKeys(TestProperties.getTestProperties().getProperty("login"));
+        webDriver.findElement(By.id("password")).sendKeys(TestProperties.getTestProperties().getProperty("password"));
+        webDriver.findElement(By.id("login-button")).click();
+
+        softAssert.assertEquals(webDriver.findElement(By.id("user-name")).getText(), "ROMAN IOVLEV");
+    }
+
 }

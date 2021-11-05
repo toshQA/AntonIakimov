@@ -13,24 +13,17 @@ public class Exercise1 extends BaseTest {
     @Test
     public void excercise1() {
         // 1. Open test site by URL
-        String actualURL = webDriver.getCurrentUrl();
-        softAssert.assertEquals(actualURL, TestProperties.getTestProperties().getProperty("homePageURL"));
+        assertHomePageURL();
 
         // 2. Assert Browser title
-        softAssert.assertTrue(webDriver.getTitle().contains("Home Page"));
+        assertHomePageTitle();
 
-        // 3. Perform login
-        webDriver.findElement(By.id("user-icon")).click();
-        webDriver.findElement(By.id("name")).sendKeys(TestProperties.getTestProperties().getProperty("login"));
-        webDriver.findElement(By.id("password")).sendKeys(TestProperties.getTestProperties().getProperty("password"));
-        webDriver.findElement(By.id("login-button")).click();
-
-        // 4. Assert Username is loggined
-        softAssert.assertEquals(webDriver.findElement(By.id("user-name")).getText(), "ROMAN IOVLEV");
+        // 3, 4. Perform login and assert Username is loggined
+        assertUserIsLoggined();
 
         // 5. Assert that there are 4 items on the header section are displayed and they have proper texts
         List<WebElement> actualHeaderNavBarItems =
-            webDriver.findElements(By.xpath("//ul[@class='uui-navigation nav navbar-nav m-l8']/li/a"));
+            webDriver.findElements(By.xpath("//ul[contains(@class, 'm-l8')]/li/a"));
         assertHeaderNavBarItemText(actualHeaderNavBarItems);
 
         // 6. Assert that there are 4 images on the Index Page and they are displayed
@@ -57,10 +50,8 @@ public class Exercise1 extends BaseTest {
     }
 
     private void assertHeaderNavBarItemText(List<WebElement> actualHeaderNavBarItems) {
-        for (int i = 0; i < actualHeaderNavBarItems.size(); i++) {
-            softAssert.assertEquals(actualHeaderNavBarItems.get(i).getText(),
-                DataClass.expectedHeaderNavBarItemTexts.get(i));
-        }
+        softAssert.assertEquals(actualHeaderNavBarItems.size(), DataClass.EXPECTED_HEADER_NAV_BAR_ITEM_TEXTS.size());
+        actualHeaderNavBarItems.containsAll(DataClass.EXPECTED_HEADER_NAV_BAR_ITEM_TEXTS);
     }
 
     private void assertImagesOnTheHomePage(List<WebElement> images) {
@@ -70,15 +61,12 @@ public class Exercise1 extends BaseTest {
     }
 
     private void assertTextsUnderImagesOnTheHomePage(List<WebElement> texts) {
-        for (int i = 0; i < texts.size(); i++) {
-            softAssert.assertEquals(texts.get(i).getText(), DataClass.expectedTextsUnderTheImages.get(i));
-        }
+        softAssert.assertEquals(texts.size(), DataClass.EXPECTED_TEXTS_UNDER_THE_IMAGES.size());
+        texts.containsAll(DataClass.EXPECTED_TEXTS_UNDER_THE_IMAGES);
     }
 
     private void assertSideNavBarItemText(List<WebElement> actualSideNavBarItems) {
-        for (int i = 0; i < actualSideNavBarItems.size(); i++) {
-            softAssert.assertEquals(actualSideNavBarItems.get(i).getText(),
-                DataClass.expectedSideNavBarItemTexts.get(i));
-        }
+        softAssert.assertEquals(actualSideNavBarItems.size(), DataClass.EXPECTED_SIDE_NAV_BAR_ITEM_TEXTS.size());
+        actualSideNavBarItems.containsAll(DataClass.EXPECTED_SIDE_NAV_BAR_ITEM_TEXTS);
     }
 }
