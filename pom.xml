@@ -21,6 +21,10 @@
 
         <maven-surefire.version>3.0.0-M5</maven-surefire.version>
 
+        <webdrivermanager.version>5.0.3</webdrivermanager.version>
+
+        <selenium.version>4.0.0</selenium.version>
+
         <assertj.version>3.21.0</assertj.version>
     </properties>
 
@@ -46,6 +50,18 @@
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
         </dependency>
 
     </dependencies>
@@ -91,7 +107,7 @@
                 <version>${maven-surefire.version}</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>${project.basedir}/src/test/resources/com.epam.tc.hw1/${suite.xml.name}</suiteXmlFile>
+                        <suiteXmlFile>${project.basedir}/src/test/resources/com.epam.tc.hw3/${suite.xml.name}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
@@ -107,9 +123,6 @@
         </profile>
         <profile>
             <id>hm1-sum-subtract-calculator-test-suite</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
                 <suite.xml.name>SumAndSubtractCalculatorTestSuite.xml</suite.xml.name>
             </properties>
@@ -118,6 +131,15 @@
             <id>hm1-multiply-divide-calculator-test-suite</id>
             <properties>
                 <suite.xml.name>MultiplyAndDivideCalculatorTestSuite.xml</suite.xml.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw3-all-exercises-test-suite</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml.name>AllExercisesTestSuite.xml</suite.xml.name>
             </properties>
         </profile>
     </profiles>
