@@ -51,7 +51,7 @@ public class Exercise1 extends BaseTest {
 
     private void assertHeaderNavBarItemText(List<WebElement> actualHeaderNavBarItems) {
         softAssert.assertEquals(actualHeaderNavBarItems.size(), DataClass.EXPECTED_HEADER_NAV_BAR_ITEM_TEXTS.size());
-        actualHeaderNavBarItems.containsAll(DataClass.EXPECTED_HEADER_NAV_BAR_ITEM_TEXTS);
+        softAssert.assertTrue(actualHeaderNavBarItems.containsAll(DataClass.EXPECTED_HEADER_NAV_BAR_ITEM_TEXTS));
     }
 
     private void assertImagesOnTheHomePage(List<WebElement> images) {
@@ -62,11 +62,11 @@ public class Exercise1 extends BaseTest {
 
     private void assertTextsUnderImagesOnTheHomePage(List<WebElement> texts) {
         softAssert.assertEquals(texts.size(), DataClass.EXPECTED_TEXTS_UNDER_THE_IMAGES.size());
-        texts.containsAll(DataClass.EXPECTED_TEXTS_UNDER_THE_IMAGES);
+        softAssert.assertTrue(texts.containsAll(DataClass.EXPECTED_TEXTS_UNDER_THE_IMAGES));
     }
 
     private void assertSideNavBarItemText(List<WebElement> actualSideNavBarItems) {
         softAssert.assertEquals(actualSideNavBarItems.size(), DataClass.EXPECTED_SIDE_NAV_BAR_ITEM_TEXTS.size());
-        actualSideNavBarItems.containsAll(DataClass.EXPECTED_SIDE_NAV_BAR_ITEM_TEXTS);
+        softAssert.assertTrue(actualSideNavBarItems.containsAll(DataClass.EXPECTED_SIDE_NAV_BAR_ITEM_TEXTS));
     }
 }
