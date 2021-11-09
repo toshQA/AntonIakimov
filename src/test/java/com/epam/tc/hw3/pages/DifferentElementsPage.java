@@ -1,17 +1,12 @@
 package com.epam.tc.hw3.pages;
 
-import com.epam.tc.hw3.sections.Header;
-import com.epam.tc.hw3.sections.LeftSideMenu;
-import com.epam.tc.hw3.tests.utils.BaseTest;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class DifferentElementsPage extends BaseTest {
-    protected Header header;
-    protected LeftSideMenu leftSideMenu;
+public class DifferentElementsPage extends BasePage {
 
     @FindBy(xpath = "//label[contains(., 'Water')]/input")
     private WebElement waterCheckbox;
@@ -32,9 +27,7 @@ public class DifferentElementsPage extends BaseTest {
     private List<WebElement> logsList;
 
     public DifferentElementsPage(WebDriver webDriver) {
-        PageFactory.initElements(webDriver, this);
-        header = new Header(webDriver);
-        leftSideMenu = new LeftSideMenu(webDriver);
+        super(webDriver);
     }
 
     public void selectCheckboxes() {
@@ -53,6 +46,11 @@ public class DifferentElementsPage extends BaseTest {
 
     public List<WebElement> getLogsList() {
         return logsList;
+    }
+
+    public List<String> getActualLogsTexts(List<WebElement> logsList) {
+        List<String> actualActualLogsText = logsList.stream().map(WebElement::getText).collect(Collectors.toList());
+        return actualActualLogsText;
     }
 
 }

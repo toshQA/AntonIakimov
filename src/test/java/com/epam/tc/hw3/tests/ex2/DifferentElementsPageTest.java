@@ -12,20 +12,11 @@ public class DifferentElementsPageTest extends BaseTest {
     public void differentElementsPageTest() {
         HomePage homePage = new HomePage(webDriver);
 
-        // 1. Open test site by URL
-        assertHomePageURL();
-
-        // 2. Assert Browser title
-        assertHomePageTitle();
-
-        // 3, 4. Perform login and assert Username is loggined
-        homePage.getHeader().login();
-        softAssert.assertEquals(homePage.getHeader().getUserName(),
-            TestProperties.getTestProperties().getProperty("fullName"));
-
         // 5. Open through the header menu Service -> Different Elements Page
         DifferentElementsPage differentElementsPage = new DifferentElementsPage(webDriver);
-        homePage.getHeader().openDifferentElementsPage();
+        homePage
+            .getHeader()
+            .openDifferentElementsPage();
         softAssert.assertEquals(webDriver.getCurrentUrl(),
             TestProperties.getTestProperties().getProperty("differentElementsPageURL"));
 
@@ -47,7 +38,6 @@ public class DifferentElementsPageTest extends BaseTest {
                                                    .get(2).getText().contains("Wind: condition changed to true"));
         softAssert.assertTrue(differentElementsPage.getLogsList()
                                                    .get(3).getText().contains("Water: condition changed to true"));
-
         softAssert.assertAll();
 
     }

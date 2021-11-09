@@ -26,6 +26,10 @@ public class LeftSideMenu {
     @FindBy(xpath = "//ul[@class='sidebar-menu left']/li/a/span")
     private List<WebElement> actualSideNavBarItems;
 
+    public LeftSideMenu(WebDriver webDriver) {
+        PageFactory.initElements(webDriver, this);
+    }
+
     public List<WebElement> getActualSideNavBarItems() {
         return actualSideNavBarItems;
     }
@@ -35,9 +39,5 @@ public class LeftSideMenu {
                                                                            .map(WebElement::getText)
                                                                            .collect(Collectors.toList());
         return actualSideNavBarItemsTexts;
-    }
-
-    public LeftSideMenu(WebDriver webDriver) {
-        PageFactory.initElements(webDriver, this);
     }
 }

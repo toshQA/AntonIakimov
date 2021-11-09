@@ -1,5 +1,7 @@
 package com.epam.tc.hw3.tests.utils;
 
+import com.epam.tc.hw3.pages.HomePage;
+import com.epam.tc.hw3.sections.Header;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +13,7 @@ import org.testng.asserts.SoftAssert;
 public class BaseTest {
     protected WebDriver webDriver;
     protected SoftAssert softAssert;
+    protected Header header;
 
     @BeforeMethod
     public void setUp() {
@@ -21,6 +24,14 @@ public class BaseTest {
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         webDriver.get(TestProperties.getTestProperties().getProperty("homePageURL"));
 
+        header = new Header(webDriver);
+        // 1. Open test site by URL
+        assertHomePageURL();
+        // 2. Assert Browser title
+        assertHomePageTitle();
+        // 3, 4. Perform login and assert Username is loggined
+        performLogin();
+        assertUsernameIsLoggined();
     }
 
     @AfterMethod
@@ -35,5 +46,14 @@ public class BaseTest {
 
     protected void assertHomePageTitle() {
         softAssert.assertTrue(webDriver.getTitle().contains("Home Page"));
+    }
+
+    protected void performLogin() {
+        header.login();
+    }
+
+    protected void assertUsernameIsLoggined() {
+        softAssert.assertEquals(header.getUserName(),
+            TestProperties.getTestProperties().getProperty("fullName"));
     }
 }

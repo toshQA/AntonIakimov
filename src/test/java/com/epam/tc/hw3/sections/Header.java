@@ -1,7 +1,5 @@
 package com.epam.tc.hw3.sections;
 
-import com.epam.tc.hw3.tests.utils.BaseTest;
-import com.epam.tc.hw3.tests.utils.DataClass;
 import com.epam.tc.hw3.tests.utils.TestProperties;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Header extends BaseTest {
+public class Header {
     @FindBy(id = "epam-logo")
     private WebElement epamLogo;
 
@@ -56,9 +54,17 @@ public class Header extends BaseTest {
 
     public void login() {
         userIconButton.click();
-        loginInput.sendKeys(TestProperties.getTestProperties().getProperty("login"));
-        passwordInput.sendKeys(TestProperties.getTestProperties().getProperty("password"));
+        getLogin();
+        getPassword();
         enterButton.click();
+    }
+
+    public void getLogin() {
+        loginInput.sendKeys(TestProperties.getTestProperties().getProperty("login"));
+    }
+
+    public void getPassword() {
+        passwordInput.sendKeys(TestProperties.getTestProperties().getProperty("password"));
     }
 
     public String getUserName() {
