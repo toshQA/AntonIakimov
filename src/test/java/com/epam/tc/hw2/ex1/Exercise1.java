@@ -2,7 +2,7 @@ package com.epam.tc.hw2.ex1;
 
 import com.epam.tc.hw2.BaseTest;
 import com.epam.tc.hw2.DataClass;
-import com.epam.tc.hw2.TestProperties;
+import java.util.ArrayList;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -51,7 +51,12 @@ public class Exercise1 extends BaseTest {
 
     private void assertHeaderNavBarItemText(List<WebElement> actualHeaderNavBarItems) {
         softAssert.assertEquals(actualHeaderNavBarItems.size(), DataClass.EXPECTED_HEADER_NAV_BAR_ITEM_TEXTS.size());
-        softAssert.assertTrue(actualHeaderNavBarItems.containsAll(DataClass.EXPECTED_HEADER_NAV_BAR_ITEM_TEXTS));
+        List<String> actualHeaderNavBarItemsTextsList = new ArrayList<>();
+        for (WebElement actualHeaderNavBarItemsText : actualHeaderNavBarItems) {
+            actualHeaderNavBarItemsTextsList.add(actualHeaderNavBarItemsText.getText());
+        }
+        softAssert.assertTrue(actualHeaderNavBarItemsTextsList
+            .containsAll(DataClass.EXPECTED_HEADER_NAV_BAR_ITEM_TEXTS));
     }
 
     private void assertImagesOnTheHomePage(List<WebElement> images) {
@@ -62,11 +67,19 @@ public class Exercise1 extends BaseTest {
 
     private void assertTextsUnderImagesOnTheHomePage(List<WebElement> texts) {
         softAssert.assertEquals(texts.size(), DataClass.EXPECTED_TEXTS_UNDER_THE_IMAGES.size());
-        softAssert.assertTrue(texts.containsAll(DataClass.EXPECTED_TEXTS_UNDER_THE_IMAGES));
+        List<String> textsUnderImagesList = new ArrayList<>();
+        for (WebElement textUnderImage : texts) {
+            textsUnderImagesList.add(textUnderImage.getText());
+        }
+        softAssert.assertTrue(textsUnderImagesList.containsAll(DataClass.EXPECTED_TEXTS_UNDER_THE_IMAGES));
     }
 
     private void assertSideNavBarItemText(List<WebElement> actualSideNavBarItems) {
         softAssert.assertEquals(actualSideNavBarItems.size(), DataClass.EXPECTED_SIDE_NAV_BAR_ITEM_TEXTS.size());
-        softAssert.assertTrue(actualSideNavBarItems.containsAll(DataClass.EXPECTED_SIDE_NAV_BAR_ITEM_TEXTS));
+        List<String> actualSideNavBarItemsTextsList = new ArrayList<>();
+        for (WebElement actualSideNavBarItemsText : actualSideNavBarItems) {
+            actualSideNavBarItemsTextsList.add(actualSideNavBarItemsText.getText());
+        }
+        softAssert.assertTrue(actualSideNavBarItemsTextsList.containsAll(DataClass.EXPECTED_SIDE_NAV_BAR_ITEM_TEXTS));
     }
 }
