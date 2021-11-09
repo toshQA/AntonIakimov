@@ -5,6 +5,7 @@ import com.epam.tc.hw3.sections.LeftSideMenu;
 import com.epam.tc.hw3.tests.utils.BaseTest;
 import com.epam.tc.hw3.tests.utils.DataClass;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -47,6 +48,11 @@ public class HomePage extends BaseTest {
 
     public List<WebElement> getTexts() {
         return texts;
+    }
+
+    public List<String> getActualTexts(List<WebElement> texts) {
+        List<String> actualTexts = texts.stream().map(WebElement::getText).collect(Collectors.toList());
+        return actualTexts;
     }
 
     public void switchToFrame(WebDriver webDriver) {

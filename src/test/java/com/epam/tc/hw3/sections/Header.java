@@ -4,6 +4,7 @@ import com.epam.tc.hw3.tests.utils.BaseTest;
 import com.epam.tc.hw3.tests.utils.DataClass;
 import com.epam.tc.hw3.tests.utils.TestProperties;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -66,6 +67,13 @@ public class Header extends BaseTest {
 
     public List<WebElement> getActualHeaderNavBarItems() {
         return actualHeaderNavBarItems;
+    }
+
+    public List<String> getActualHeaderNavBarItemsTexts(List<WebElement> actualHeaderNavBarItems) {
+        List<String> actualHeaderNavBarItemsTexts = actualHeaderNavBarItems.stream()
+                                                                           .map(WebElement::getText)
+                                                                           .collect(Collectors.toList());
+        return actualHeaderNavBarItemsTexts;
     }
 
     public void openDifferentElementsPage() {

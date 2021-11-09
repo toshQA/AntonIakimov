@@ -1,6 +1,7 @@
 package com.epam.tc.hw3.sections;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,6 +28,13 @@ public class LeftSideMenu {
 
     public List<WebElement> getActualSideNavBarItems() {
         return actualSideNavBarItems;
+    }
+
+    public List<String> getActualSideNavBarItemsTexts(List<WebElement> actualSideNavBarItems) {
+        List<String> actualSideNavBarItemsTexts = actualSideNavBarItems.stream()
+                                                                           .map(WebElement::getText)
+                                                                           .collect(Collectors.toList());
+        return actualSideNavBarItemsTexts;
     }
 
     public LeftSideMenu(WebDriver webDriver) {
