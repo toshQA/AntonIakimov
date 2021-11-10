@@ -107,7 +107,7 @@
         <version>${maven-surefire.version}</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>${project.basedir}/src/test/resources/com.epam.tc.hw2/${suite.xml.name}</suiteXmlFile>
+            <suiteXmlFile>${project.basedir}/src/test/resources/com.epam.tc.hw3/${suite.xml.name}</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
       </plugin>
@@ -135,6 +135,12 @@
     </profile>
     <profile>
       <id>hw2-all-exercises-test-suite</id>
+      <properties>
+        <suite.xml.name>AllExercisesTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+    <profile>
+      <id>hw3-all-exercises-test-suite</id>
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>
