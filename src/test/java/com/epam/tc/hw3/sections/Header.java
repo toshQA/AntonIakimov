@@ -76,10 +76,7 @@ public class Header {
     }
 
     public List<String> getActualHeaderNavBarItemsTexts(List<WebElement> actualHeaderNavBarItems) {
-        List<String> actualHeaderNavBarItemsTexts = actualHeaderNavBarItems.stream()
-                                                                           .map(WebElement::getText)
-                                                                           .collect(Collectors.toList());
-        return actualHeaderNavBarItemsTexts;
+        return actualHeaderNavBarItems.stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
     public void openDifferentElementsPage() {

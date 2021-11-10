@@ -1,7 +1,6 @@
 package com.epam.tc.hw3.pages;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -46,11 +45,6 @@ public class DifferentElementsPage extends BasePage {
 
     public List<WebElement> getLogsList() {
         return logsList;
-    }
-
-    public List<String> getActualLogsTexts(List<WebElement> logsList) {
-        List<String> actualActualLogsText = logsList.stream().map(WebElement::getText).collect(Collectors.toList());
-        return actualActualLogsText;
     }
 
 }

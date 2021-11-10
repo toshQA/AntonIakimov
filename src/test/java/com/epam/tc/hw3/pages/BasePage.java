@@ -12,13 +12,14 @@ public class BasePage {
     protected WebDriver webDriver;
 
     public BasePage(WebDriver webDriver) {
+        this.webDriver = webDriver;
         PageFactory.initElements(webDriver, this);
         header = new Header(webDriver);
         leftSideMenu = new LeftSideMenu(webDriver);
     }
 
     public WebDriver getDriver() {
-        return this.webDriver;
+        return webDriver;
     }
 
 }

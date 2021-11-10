@@ -35,9 +35,6 @@ public class LeftSideMenu {
     }
 
     public List<String> getActualSideNavBarItemsTexts(List<WebElement> actualSideNavBarItems) {
-        List<String> actualSideNavBarItemsTexts = actualSideNavBarItems.stream()
-                                                                           .map(WebElement::getText)
-                                                                           .collect(Collectors.toList());
-        return actualSideNavBarItemsTexts;
+        return actualSideNavBarItems.stream().map(WebElement::getText).collect(Collectors.toList());
     }
 }

@@ -43,8 +43,7 @@ public class HomePage extends BasePage {
     }
 
     public List<String> getActualTexts(List<WebElement> texts) {
-        List<String> actualTexts = texts.stream().map(WebElement::getText).collect(Collectors.toList());
-        return actualTexts;
+        return texts.stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
     public void switchToFrame() {

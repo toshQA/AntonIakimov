@@ -1,6 +1,5 @@
 package com.epam.tc.hw3.tests.utils;
 
-import com.epam.tc.hw3.pages.HomePage;
 import com.epam.tc.hw3.sections.Header;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.concurrent.TimeUnit;
