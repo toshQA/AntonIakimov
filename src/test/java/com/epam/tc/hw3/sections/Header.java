@@ -54,16 +54,16 @@ public class Header {
 
     public void login() {
         userIconButton.click();
-        getLogin();
-        getPassword();
+        typeLogin();
+        typePassword();
         enterButton.click();
     }
 
-    public void getLogin() {
+    public void typeLogin() {
         loginInput.sendKeys(TestProperties.getTestProperties().getProperty("login"));
     }
 
-    public void getPassword() {
+    public void typePassword() {
         passwordInput.sendKeys(TestProperties.getTestProperties().getProperty("password"));
     }
 
