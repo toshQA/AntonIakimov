@@ -13,7 +13,7 @@ public class HomePageFailureTests extends BaseTest {
     @Feature("Allure report for Home page")
     @Story("Allure reporting training with failure test")
     @Test
-    public void homePageTest() {
+    public void homePageFailureTest() {
         HomePageSteps homePageSteps = new HomePageSteps(webDriver);
 
         homePageSteps.openHomePage();
