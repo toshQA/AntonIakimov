@@ -18,27 +18,33 @@ public class HomePageSteps {
 
     public HomePageSteps(WebDriver webDriver) {
         homePage = new HomePage(webDriver);
-
+        softAssert = new SoftAssert();
     }
 
     @Step("Open Home Page")
     public void openHomePage() {
-        baseTest.setUp();
+        homePage.openHomePage();
     }
 
     @Step("Assert Home Page title")
     public void assertHomePageTitle() {
-        baseTest.assertHomePageTitle();
+        softAssert.assertTrue(homePage.getDriver().getTitle().contains("Home Page"));
+    }
+
+    @Step("Assert incorrect Home Page title")
+    public void assertIncorrectHomePageTitle() {
+        softAssert.assertTrue(homePage.getDriver().getTitle().contains("Test Page"));
     }
 
     @Step("Perform Login")
     public void performLogin() {
-        baseTest.performLogin();
+        homePage.getHeader().login();
     }
 
     @Step("Assert Username")
     public void assertUsername() {
-        baseTest.assertUsernameIsLoggined();
+        softAssert.assertEquals(homePage.getHeader().getUserName(),
+            TestProperties.getTestProperties().getProperty("fullName"));
     }
 
     @Step("Assert header navbar items")

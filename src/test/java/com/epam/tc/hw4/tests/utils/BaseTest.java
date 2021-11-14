@@ -14,6 +14,10 @@ public class BaseTest {
     protected SoftAssert softAssert;
     protected Header header;
 
+    public BaseTest() {
+        header = new Header(webDriver);
+    }
+
     @BeforeMethod
     public void setUp() {
         softAssert = new SoftAssert();
@@ -21,16 +25,7 @@ public class BaseTest {
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        webDriver.get(TestProperties.getTestProperties().getProperty("homePageURL"));
 
-        header = new Header(webDriver);
-        // 1. Open test site by URL
-        assertHomePageURL();
-        // 2. Assert Browser title
-        assertHomePageTitle();
-        // 3, 4. Perform login and assert Username is loggined
-        performLogin();
-        assertUsernameIsLoggined();
     }
 
     @AfterMethod
