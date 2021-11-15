@@ -14,18 +14,14 @@
 
     <testng.version>7.4.0</testng.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
     <checkstyle.version>8.42</checkstyle.version>
-
     <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
-
     <maven-surefire.version>3.0.0-M5</maven-surefire.version>
-
     <webdrivermanager.version>5.0.3</webdrivermanager.version>
-
     <selenium.version>4.0.0</selenium.version>
-
     <assertj.version>3.21.0</assertj.version>
+    <cucumber.version>7.0.0</cucumber.version>
+
   </properties>
 
 
@@ -63,6 +59,19 @@
       <artifactId>selenium-java</artifactId>
       <version>${selenium.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>${cucumber.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-testng</artifactId>
+      <version>${cucumber.version}</version>
+    </dependency>
+
 
   </dependencies>
 
@@ -107,7 +116,7 @@
         <version>${maven-surefire.version}</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>${project.basedir}/src/test/resources/com.epam.tc.hw3/${suite.xml.name}</suiteXmlFile>
+            <suiteXmlFile>${project.basedir}/src/test/resources/com.epam.tc.hw5/${suite.xml.name}</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
       </plugin>
@@ -141,6 +150,12 @@
     </profile>
     <profile>
       <id>hw3-all-exercises-test-suite</id>
+      <properties>
+        <suite.xml.name>AllExercisesTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+    <profile>
+      <id>hw5-all-exercises-test-suite</id>
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>
