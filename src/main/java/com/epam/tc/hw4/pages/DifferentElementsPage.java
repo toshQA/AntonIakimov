@@ -1,4 +1,4 @@
-package com.epam.tc.hw5.pages;
+package com.epam.tc.hw4.pages;
 
 import java.util.List;
 import org.openqa.selenium.WebDriver;
@@ -29,6 +29,11 @@ public class DifferentElementsPage extends BasePage {
         super(webDriver);
     }
 
+    public void selectCheckboxes() {
+        waterCheckbox.click();
+        windCheckbox.click();
+    }
+
     public void selectRadioButton() {
         selenRadioButton.click();
     }
@@ -42,15 +47,4 @@ public class DifferentElementsPage extends BasePage {
         return logsList;
     }
 
-    public void selectWaterCheckbox() {
-        waterCheckbox.click();
-    }
-
-    public void selectWindCheckbox() {
-        windCheckbox.click();
-    }
-
-    public void selectSelenRadioButton() {
-        selenRadioButton.click();
-    }
 }

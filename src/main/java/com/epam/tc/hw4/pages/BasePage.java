@@ -1,7 +1,7 @@
-package com.epam.tc.hw5.pages;
+package com.epam.tc.hw4.pages;
 
-import com.epam.tc.hw5.sections.Header;
-import com.epam.tc.hw5.sections.LeftSideMenu;
+import com.epam.tc.hw4.sections.Header;
+import com.epam.tc.hw4.sections.LeftSideMenu;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -21,4 +21,5 @@ public class BasePage {
     public WebDriver getDriver() {
         return webDriver;
     }
+
 }

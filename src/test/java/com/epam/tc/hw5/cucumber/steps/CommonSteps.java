@@ -1,6 +1,7 @@
 package com.epam.tc.hw5.cucumber.steps;
 
-import com.epam.tc.hw5.cucumber.utils.TestProperties;
+import static com.epam.tc.hw5.cucumber.utils.TestProperties.getProperty;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
@@ -9,14 +10,14 @@ public class CommonSteps extends AbstractBaseStep {
 
     @Given("I open JDI GitHub site")
     public void openHomePage() {
-        homePage.openHomePage(TestProperties.getTestProperties().getProperty("homePageURL"));
+        homePage.openHomePage(getProperty("homePageURL"));
     }
 
     @And("I login as user 'Roman Iovlev'")
     public void loginAsRomanIovlev() {
         homePage.getHeader().clickUserIconButton();
-        homePage.getHeader().typeLogin(TestProperties.getTestProperties().getProperty("login"));
-        homePage.getHeader().typePassword(TestProperties.getTestProperties().getProperty("password"));
+        homePage.getHeader().typeLogin(getProperty("login"));
+        homePage.getHeader().typePassword(getProperty("password"));
         homePage.getHeader().clickEnterButton();
     }
 

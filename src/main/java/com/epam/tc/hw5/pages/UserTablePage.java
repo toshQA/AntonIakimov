@@ -9,25 +9,25 @@ import org.openqa.selenium.support.FindBy;
 public class UserTablePage extends BasePage {
 
     @FindBy(xpath = "//tr/td[1]")
-    List<WebElement> numberList;
+    private List<WebElement> numberList;
 
     @FindBy(xpath = "//td/select")
-    List<WebElement> typeList;
+    private List<WebElement> typeList;
 
     @FindBy(xpath = "//td/a")
-    List<WebElement> userList;
+    private List<WebElement> userList;
 
     @FindBy(xpath = "//div[@class='user-descr']/span")
-    List<WebElement> descriptionList;
+    private List<WebElement> descriptionList;
 
     @FindBy(xpath = "//div[@class='user-descr']/input")
-    List<WebElement> checkboxList;
+    private List<WebElement> checkboxList;
 
     @FindBy(xpath = "//tr[1]/td/select/option")
-    List<WebElement> dropdownItemsList;
+    private List<WebElement> dropdownItemsList;
 
     @FindBy(xpath = "//input[@id='ivan']")
-    WebElement ivanVipCheckbox;
+    private WebElement ivanVipCheckbox;
 
     @FindBy(xpath = "//ul[contains(@class, 'logs')]/li")
     private List<WebElement> logsList;

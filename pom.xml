@@ -20,8 +20,9 @@
     <webdrivermanager.version>5.0.3</webdrivermanager.version>
     <selenium.version>4.0.0</selenium.version>
     <assertj.version>3.21.0</assertj.version>
+    <allure.version>2.16.1</allure.version>
+    <aspectj.version>1.9.5</aspectj.version>
     <cucumber.version>7.0.0</cucumber.version>
-
   </properties>
 
 
@@ -61,6 +62,12 @@
     </dependency>
 
     <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-testng</artifactId>
+      <version>${allure.version}</version>
+    </dependency>
+
+    <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-java</artifactId>
       <version>${cucumber.version}</version>
@@ -71,7 +78,6 @@
       <artifactId>cucumber-testng</artifactId>
       <version>${cucumber.version}</version>
     </dependency>
-
 
   </dependencies>
 
@@ -115,10 +121,20 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${maven-surefire.version}</version>
         <configuration>
+          <argLine>
+            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+          </argLine>
           <suiteXmlFiles>
             <suiteXmlFile>${project.basedir}/src/test/resources/com.epam.tc.hw5/${suite.xml.name}</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+          </dependency>
+        </dependencies>
       </plugin>
     </plugins>
   </build>
@@ -155,6 +171,12 @@
       </properties>
     </profile>
     <profile>
+      <id>hw4-all-exercises-test-suite</id>
+      <properties>
+        <suite.xml.name>AllExercisesTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+    <profile>
       <id>hw5-all-exercises-test-suite</id>
       <activation>
         <activeByDefault>true</activeByDefault>
@@ -164,5 +186,19 @@
       </properties>
     </profile>
   </profiles>
+
+  <reporting>
+    <excludeDefaults>true</excludeDefaults>
+    <plugins>
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>2.10.0</version>
+        <configuration>
+          <reportVersion>${allure.version}</reportVersion>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
 
 </project>

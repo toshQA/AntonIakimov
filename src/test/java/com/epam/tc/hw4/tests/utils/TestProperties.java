@@ -1,4 +1,4 @@
-package com.epam.tc.hw5.cucumber.utils;
+package com.epam.tc.hw4.tests.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,7 +10,7 @@ public class TestProperties {
     public static Properties getTestProperties() {
 
         Properties properties = new Properties();
-        try (InputStream input = new FileInputStream("src/test/resources/com.epam.tc.hw5/test.properties")) {
+        try (InputStream input = new FileInputStream("src/test/resources/com.epam.tc.hw4/test.properties")) {
             properties.load(input);
         } catch (IOException ex) {
             ex.printStackTrace();

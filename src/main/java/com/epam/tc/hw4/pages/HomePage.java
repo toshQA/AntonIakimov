@@ -1,7 +1,7 @@
-package com.epam.tc.hw5.pages;
+package com.epam.tc.hw4.pages;
 
-import com.epam.tc.hw5.sections.Header;
-import com.epam.tc.hw5.sections.LeftSideMenu;
+import com.epam.tc.hw4.sections.Header;
+import com.epam.tc.hw4.sections.LeftSideMenu;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.openqa.selenium.WebDriver;
@@ -61,4 +61,5 @@ public class HomePage extends BasePage {
     public void openHomePage(String url) {
         getDriver().get(url);
     }
+
 }
