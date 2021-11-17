@@ -2,7 +2,6 @@ package com.epam.tc.hw4.pages;
 
 import com.epam.tc.hw4.sections.Header;
 import com.epam.tc.hw4.sections.LeftSideMenu;
-import com.epam.tc.hw4.tests.utils.TestProperties;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.openqa.selenium.WebDriver;
@@ -59,8 +58,8 @@ public class HomePage extends BasePage {
         return frameButton;
     }
 
-    public void openHomePage() {
-        getDriver().get(TestProperties.getTestProperties().getProperty("homePageURL"));
+    public void openHomePage(String url) {
+        getDriver().get(url);
     }
 
 }

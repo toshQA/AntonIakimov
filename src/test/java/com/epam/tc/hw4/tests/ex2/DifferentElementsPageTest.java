@@ -13,16 +13,16 @@ public class DifferentElementsPageTest extends BaseTest {
     public void differentElementsPageTest() {
         DifferentElementsPageSteps differentElementsPageSteps = new DifferentElementsPageSteps(webDriver);
 
-        differentElementsPageSteps.openHomePage();
-        differentElementsPageSteps.assertHomePageTitle();
-        differentElementsPageSteps.performLogin();
-        differentElementsPageSteps.assertUsername();
-        differentElementsPageSteps.openDifferentElementPage();
-        differentElementsPageSteps.selectCheckboxes();
-        differentElementsPageSteps.selectRadioButtons();
-        differentElementsPageSteps.selectYellowItemInColorDropdown();
-        differentElementsPageSteps.assertDataFromLogs();
-        differentElementsPageSteps.assertAll();
+        differentElementsPageSteps.openHomePage()
+                                  .assertHomePageTitle()
+                                  .performLogin()
+                                  .assertUsername();
+        differentElementsPageSteps.openDifferentElementPage()
+                                  .selectCheckboxes()
+                                  .selectRadioButtons()
+                                  .selectYellowItemInColorDropdown()
+                                  .assertDataFromLogs()
+                                  .assertAll();
 
     }
 }

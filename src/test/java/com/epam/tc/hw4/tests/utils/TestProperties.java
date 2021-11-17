@@ -10,11 +10,15 @@ public class TestProperties {
     public static Properties getTestProperties() {
 
         Properties properties = new Properties();
-        try (InputStream input = new FileInputStream("src/test/resources/com.epam.tc.hw3/test.properties")) {
+        try (InputStream input = new FileInputStream("src/test/resources/com.epam.tc.hw4/test.properties")) {
             properties.load(input);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
         return properties;
+    }
+
+    public static String getProperty(String property) {
+        return TestProperties.getTestProperties().getProperty(property);
     }
 }

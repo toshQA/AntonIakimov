@@ -1,96 +1,78 @@
 package com.epam.tc.hw4.steps;
 
-import static com.epam.tc.hw3.tests.utils.DataClass.EXPECTED_HEADER_NAV_BAR_ITEM_TEXTS;
-import static com.epam.tc.hw3.tests.utils.DataClass.EXPECTED_SIDE_NAV_BAR_ITEM_TEXTS;
-import static com.epam.tc.hw3.tests.utils.DataClass.EXPECTED_TEXTS_UNDER_THE_IMAGES;
+import static com.epam.tc.hw4.tests.utils.DataClass.EXPECTED_HEADER_NAV_BAR_ITEM_TEXTS;
+import static com.epam.tc.hw4.tests.utils.DataClass.EXPECTED_SIDE_NAV_BAR_ITEM_TEXTS;
+import static com.epam.tc.hw4.tests.utils.DataClass.EXPECTED_TEXTS_UNDER_THE_IMAGES;
+import static com.epam.tc.hw4.tests.utils.TestProperties.getProperty;
 
-import com.epam.tc.hw4.pages.HomePage;
-import com.epam.tc.hw4.tests.utils.BaseTest;
-import com.epam.tc.hw4.tests.utils.TestProperties;
 import io.qameta.allure.Step;
+import java.util.List;
 import org.openqa.selenium.WebDriver;
-import org.testng.asserts.SoftAssert;
+import org.openqa.selenium.WebElement;
 
-public class HomePageSteps {
-    protected SoftAssert softAssert;
-    protected HomePage homePage;
-    protected BaseTest baseTest;
+public class HomePageSteps extends BasePageSteps {
 
     public HomePageSteps(WebDriver webDriver) {
-        homePage = new HomePage(webDriver);
-        softAssert = new SoftAssert();
-    }
-
-    @Step("Open Home Page")
-    public void openHomePage() {
-        homePage.openHomePage();
-    }
-
-    @Step("Assert Home Page title")
-    public void assertHomePageTitle() {
-        softAssert.assertTrue(homePage.getDriver().getTitle().contains("Home Page"));
+        super(webDriver);
     }
 
     @Step("Assert incorrect Home Page title")
-    public void assertIncorrectHomePageTitle() {
+    public HomePageSteps assertIncorrectHomePageTitle() {
         softAssert.assertTrue(homePage.getDriver().getTitle().contains("Test Page"));
-    }
-
-    @Step("Perform Login")
-    public void performLogin() {
-        homePage.getHeader().login();
-    }
-
-    @Step("Assert Username")
-    public void assertUsername() {
-        softAssert.assertEquals(homePage.getHeader().getUserName(),
-            TestProperties.getTestProperties().getProperty("fullName"));
+        return this;
     }
 
     @Step("Assert header navbar items")
-    public void assertHeaderNavBarItems() {
-        softAssert.assertEquals(homePage.getHeader().getActualHeaderNavBarItems().size(),
-            EXPECTED_HEADER_NAV_BAR_ITEM_TEXTS.size());
-        softAssert.assertTrue(homePage.getHeader().getActualHeaderNavBarItemsTexts(homePage
-                                          .getHeader().getActualHeaderNavBarItems())
-                                      .containsAll(EXPECTED_HEADER_NAV_BAR_ITEM_TEXTS));
+    public HomePageSteps assertHeaderNavBarItems() {
+        List<WebElement> actualHeaderNavBarItems = homePage.getHeader().getActualHeaderNavBarItems();
+        List<String> actualHeaderNavBarItemsTexts = homePage.getHeader()
+                                                            .getActualHeaderNavBarItemsTexts(actualHeaderNavBarItems);
+        softAssert.assertEquals(actualHeaderNavBarItems.size(), EXPECTED_HEADER_NAV_BAR_ITEM_TEXTS.size());
+        softAssert.assertTrue(actualHeaderNavBarItemsTexts.containsAll(EXPECTED_HEADER_NAV_BAR_ITEM_TEXTS));
+        return this;
     }
 
     @Step("Assert quantity of images on Home Page")
-    public void assertQuantityOfImages() {
-        softAssert.assertEquals(homePage.getImages().size(),
-            Integer.parseInt(TestProperties.getTestProperties().getProperty("imagesQuantity")));
+    public HomePageSteps assertQuantityOfImages() {
+        softAssert.assertEquals(homePage.getImages().size(), Integer.parseInt(getProperty("imagesQuantity")));
+        return this;
     }
 
     @Step("Assert texts under the images on Home Page")
-    public void assertTextsUnderTheImages() {
-        softAssert.assertEquals(homePage.getTexts().size(), EXPECTED_TEXTS_UNDER_THE_IMAGES.size());
-        softAssert.assertTrue(homePage.getActualTexts(homePage.getTexts())
-                                      .containsAll(EXPECTED_TEXTS_UNDER_THE_IMAGES));
+    public HomePageSteps assertTextsUnderTheImages() {
+        List<WebElement> texts = homePage.getTexts();
+        List<String> actualTexts = homePage.getActualTexts(texts);
+
+        softAssert.assertEquals(texts.size(), EXPECTED_TEXTS_UNDER_THE_IMAGES.size());
+        softAssert.assertTrue(actualTexts.containsAll(EXPECTED_TEXTS_UNDER_THE_IMAGES));
+        return this;
     }
 
     @Step("Assert iframe button in iframe")
-    public void assertIFrameButton() {
+    public HomePageSteps assertIFrameButton() {
         homePage.switchToFrame();
         softAssert.assertTrue(homePage.getFrameButton().isDisplayed());
+        return this;
     }
 
     @Step("Switch to parent frame")
-    public void switchToParentFrame() {
+    public HomePageSteps switchToParentFrame() {
         homePage.switchToParentFrame();
+        return this;
     }
 
     @Step("Assert side nav bar items")
-    public void assertSideNavBarItems() {
-        softAssert.assertEquals(homePage.getLeftSideMenu().getActualSideNavBarItems().size(),
-            EXPECTED_SIDE_NAV_BAR_ITEM_TEXTS.size());
-        softAssert.assertTrue(homePage.getLeftSideMenu().getActualSideNavBarItemsTexts(homePage
-                                          .getLeftSideMenu().getActualSideNavBarItems())
-                                      .containsAll(EXPECTED_SIDE_NAV_BAR_ITEM_TEXTS));
+    public HomePageSteps assertSideNavBarItems() {
+        List<WebElement> actualSideNavBarItems = homePage.getLeftSideMenu().getActualSideNavBarItems();
+        List<String> actualSideNavBarItemsTexts = homePage.getLeftSideMenu()
+                                                          .getActualSideNavBarItemsTexts(actualSideNavBarItems);
+        softAssert.assertEquals(actualSideNavBarItems.size(), EXPECTED_SIDE_NAV_BAR_ITEM_TEXTS.size());
+        softAssert.assertTrue((actualSideNavBarItemsTexts).containsAll(EXPECTED_SIDE_NAV_BAR_ITEM_TEXTS));
+        return this;
     }
 
+    @Step("Assert All")
     public void assertAll() {
         softAssert.assertAll();
     }
-
 }

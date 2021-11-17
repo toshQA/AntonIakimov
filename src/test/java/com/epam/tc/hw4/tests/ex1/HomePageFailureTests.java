@@ -2,10 +2,8 @@ package com.epam.tc.hw4.tests.ex1;
 
 import com.epam.tc.hw4.steps.HomePageSteps;
 import com.epam.tc.hw4.tests.utils.BaseTest;
-import com.epam.tc.hw4.tests.utils.Listener;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 public class HomePageFailureTests extends BaseTest {
@@ -17,15 +15,15 @@ public class HomePageFailureTests extends BaseTest {
         HomePageSteps homePageSteps = new HomePageSteps(webDriver);
 
         homePageSteps.openHomePage();
-        homePageSteps.assertIncorrectHomePageTitle();
-        homePageSteps.performLogin();
-        homePageSteps.assertUsername();
-        homePageSteps.assertHeaderNavBarItems();
-        homePageSteps.assertQuantityOfImages();
-        homePageSteps.assertTextsUnderTheImages();
-        homePageSteps.assertIFrameButton();
-        homePageSteps.switchToParentFrame();
-        homePageSteps.assertSideNavBarItems();
-        homePageSteps.assertAll();
+        homePageSteps.assertIncorrectHomePageTitle()
+                     .performLogin()
+                     .assertUsername();
+        homePageSteps.assertHeaderNavBarItems()
+                     .assertQuantityOfImages()
+                     .assertTextsUnderTheImages()
+                     .assertIFrameButton()
+                     .switchToParentFrame()
+                     .assertSideNavBarItems()
+                     .assertAll();
     }
 }

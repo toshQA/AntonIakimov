@@ -1,6 +1,5 @@
 package com.epam.tc.hw4.sections;
 
-import com.epam.tc.hw4.tests.utils.TestProperties;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.openqa.selenium.WebDriver;
@@ -52,19 +51,19 @@ public class Header {
         PageFactory.initElements(webDriver, this);
     }
 
-    public void login() {
+    public void login(String login, String password) {
         userIconButton.click();
-        typeLogin();
-        typePassword();
+        typeLogin(login);
+        typePassword(password);
         enterButton.click();
     }
 
-    public void typeLogin() {
-        loginInput.sendKeys(TestProperties.getTestProperties().getProperty("login"));
+    public void typeLogin(String login) {
+        loginInput.sendKeys(login);
     }
 
-    public void typePassword() {
-        passwordInput.sendKeys(TestProperties.getTestProperties().getProperty("password"));
+    public void typePassword(String password) {
+        passwordInput.sendKeys(password);
     }
 
     public String getUserName() {

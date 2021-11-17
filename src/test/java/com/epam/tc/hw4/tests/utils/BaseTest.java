@@ -32,22 +32,4 @@ public class BaseTest {
     public void tearDown() {
         webDriver.quit();
     }
-
-    public void assertHomePageURL() {
-        softAssert.assertEquals(webDriver.getCurrentUrl(),
-            TestProperties.getTestProperties().getProperty("homePageURL"));
-    }
-
-    public void assertHomePageTitle() {
-        softAssert.assertTrue(webDriver.getTitle().contains("Home Page"));
-    }
-
-    public void performLogin() {
-        header.login();
-    }
-
-    public void assertUsernameIsLoggined() {
-        softAssert.assertEquals(header.getUserName(),
-            TestProperties.getTestProperties().getProperty("fullName"));
-    }
 }

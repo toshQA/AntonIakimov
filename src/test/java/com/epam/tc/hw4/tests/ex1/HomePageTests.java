@@ -13,17 +13,17 @@ public class HomePageTests extends BaseTest {
     public void homePageTest() {
         HomePageSteps homePageSteps = new HomePageSteps(webDriver);
 
-        homePageSteps.openHomePage();
-        homePageSteps.assertHomePageTitle();
-        homePageSteps.performLogin();
-        homePageSteps.assertUsername();
-        homePageSteps.assertHeaderNavBarItems();
-        homePageSteps.assertQuantityOfImages();
-        homePageSteps.assertTextsUnderTheImages();
-        homePageSteps.assertIFrameButton();
-        homePageSteps.switchToParentFrame();
-        homePageSteps.assertSideNavBarItems();
-        homePageSteps.assertAll();
+        homePageSteps.openHomePage()
+                     .assertHomePageTitle()
+                     .performLogin()
+                     .assertUsername();
+        homePageSteps.assertHeaderNavBarItems()
+                     .assertQuantityOfImages()
+                     .assertTextsUnderTheImages()
+                     .assertIFrameButton()
+                     .switchToParentFrame()
+                     .assertSideNavBarItems()
+                     .assertAll();
 
     }
 }
