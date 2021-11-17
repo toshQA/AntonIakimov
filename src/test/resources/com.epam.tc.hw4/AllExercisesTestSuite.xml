@@ -8,4 +8,8 @@
     </packages>
   </test>
 
+  <listeners>
+    <listener class-name="com.epam.tc.hw4.tests.utils.Listener" />
+  </listeners>
+
 </suite>

@@ -5,6 +5,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestContext;
+import org.testng.ITestListener;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
@@ -19,12 +21,13 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    public void setUp() {
+    public void setUp(ITestContext context) {
         softAssert = new SoftAssert();
         WebDriverManager.chromedriver().setup();
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        context.setAttribute("webDriver", webDriver);
 
     }
 
