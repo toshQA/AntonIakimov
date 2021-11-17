@@ -21,39 +21,29 @@ public class CommonSteps extends AbstractBaseStep {
         homePage.getHeader().clickEnterButton();
     }
 
-    @When("I click on 'Service' button in Header")
-    public void clickOnTheServiceTabInHeader() {
-        homePage.getHeader().clickOnTheServiceTabInHeader();
+    @When("I click on {string} button in Header")
+    public void clickOnTheTabInHeader(String tabName) {
+        homePage.getHeader().clickOnTheTabInHeader(tabName);
     }
 
-    @And("I click on 'Different Elements' button in Service dropdown")
-    public void clickOnTheDifferentElementsMenuItemInDropdownMenu() {
-        homePage.getHeader().clickOnTheDifferentElementsMenuItemInDropdownMenu();
+    @And("I click on {string} button in Service dropdown")
+    public void clickOnTheSubTabServiceDropdownMenu(String service) {
+        homePage.getHeader().clickOnTheSubTabServiceDropdownMenu(service);
     }
 
-    @And("I click on 'User Table' button in Service dropdown")
-    public void clickOnTheUserTableMenuItemInDropdownMenu() {
-        homePage.getHeader().clickOnTheUserTableMenuItemInDropdownMenu();
+    @When("I select {string} checkbox")
+    public void selectCheckbox(String checkboxName) {
+        differentElementsPage.clickOnTheCheckbox(checkboxName);
     }
 
-    @When("I select 'Water' checkbox")
-    public void selectWaterCheckbox() {
-        differentElementsPage.selectWaterCheckbox();
+    @When("I select {string} radiobutton")
+    public void selectRadioButton(String radiobuttonName) {
+        differentElementsPage.clickOnTheRadiobutton(radiobuttonName);
     }
 
-    @When("I select 'Wind' checkbox")
-    public void selectWindCheckbox() {
-        differentElementsPage.selectWindCheckbox();
-    }
-
-    @When("I select 'Selen' radiobutton")
-    public void selectSelenRadioButton() {
-        differentElementsPage.selectSelenRadioButton();
-    }
-
-    @When("I select 'Yellow' in the dropdown menu")
-    public void selectYellowInDropdownMenu() {
-        differentElementsPage.selectYellowItemInColorDropdown();
+    @When("I select {string} in the dropdown menu")
+    public void selectColorInDropdownMenu(String color) {
+        differentElementsPage.selectColorInDropdown(color);
     }
 
     @When("I select 'vip' checkbox for 'Sergey Ivan'")
