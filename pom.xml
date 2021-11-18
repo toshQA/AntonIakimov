@@ -125,7 +125,7 @@
             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
           </argLine>
           <suiteXmlFiles>
-            <suiteXmlFile>${project.basedir}/src/test/resources/com.epam.tc.hw5/${suite.xml.name}</suiteXmlFile>
+            <suiteXmlFile>${project.basedir}/src/test/resources/com.epam.tc.hw6/${suite.xml.name}</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
         <dependencies>
@@ -178,6 +178,12 @@
     </profile>
     <profile>
       <id>hw5-all-exercises-test-suite</id>
+      <properties>
+        <suite.xml.name>AllExercisesTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+    <profile>
+      <id>hw6-all-exercises-test-suite</id>
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>
