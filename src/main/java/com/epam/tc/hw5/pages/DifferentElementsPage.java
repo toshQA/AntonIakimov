@@ -25,32 +25,55 @@ public class DifferentElementsPage extends BasePage {
     @FindBy(xpath = "//ul[contains(@class, 'logs')]/li")
     private List<WebElement> logsList;
 
+    @FindBy(xpath = "//label[@class='label-checkbox']")
+    private List<WebElement> checkboxList;
+
+    @FindBy(xpath = "//label[@class='label-radio']")
+    private List<WebElement> radiobuttonList;
+
+    @FindBy(tagName = "option")
+    private List<WebElement> colorsList;
+
     public DifferentElementsPage(WebDriver webDriver) {
         super(webDriver);
     }
 
-    public void selectRadioButton() {
-        selenRadioButton.click();
-    }
-
-    public void selectYellowItemInColorDropdown() {
+    public void selectColorInDropdown(String color) {
         colorsDropdown.click();
-        yellowItemInDropdown.click();
+        clickOnTheColorItem(color);
     }
 
     public List<WebElement> getLogsList() {
         return logsList;
     }
 
-    public void selectWaterCheckbox() {
-        waterCheckbox.click();
+    public List<WebElement> getCheckboxList() {
+        return checkboxList;
     }
 
-    public void selectWindCheckbox() {
-        windCheckbox.click();
+    public List<WebElement> getRadiobuttonList() {
+        return radiobuttonList;
     }
 
-    public void selectSelenRadioButton() {
-        selenRadioButton.click();
+    public List<WebElement> getColorsList() {
+        return colorsList;
+    }
+
+    public void clickOnTheCheckbox(String checkboxName) {
+        checkboxList.stream()
+                    .filter(checkbox -> checkbox.getText().contains(checkboxName))
+                    .findFirst().orElseThrow().click();
+    }
+
+    public void clickOnTheRadiobutton(String radiobuttonName) {
+        radiobuttonList.stream()
+                       .filter(radiobutton -> radiobutton.getText().contains(radiobuttonName))
+                       .findFirst().orElseThrow().click();
+    }
+
+    public void clickOnTheColorItem(String color) {
+        colorsList.stream()
+                  .filter(colorName -> colorName.getText().contains(color))
+                  .findFirst().orElseThrow().click();
     }
 }

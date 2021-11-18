@@ -50,6 +50,9 @@ public class Header {
     @FindBy(id = "user-name")
     private WebElement userName;
 
+    @FindBy(xpath = "//ul[@role='menu']/li/a")
+    private List<WebElement> serviceSubTabsList;
+
     public Header(WebDriver webDriver) {
         PageFactory.initElements(webDriver, this);
     }
@@ -82,12 +85,21 @@ public class Header {
         return actualHeaderNavBarItems.stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
-    public void clickOnTheServiceTabInHeader() {
-        serviceHeaderTab.click();
+    public List<WebElement> getServiceSubTabsList() {
+        return serviceSubTabsList;
     }
 
-    public void clickOnTheDifferentElementsMenuItemInDropdownMenu() {
-        differentElementsSubTab.click();
+    public void clickOnTheTabInHeader(String tabName) {
+        actualHeaderNavBarItems.stream()
+                               .filter(actualHeaderNavBarItems -> actualHeaderNavBarItems.getText()
+                                                                                         .equalsIgnoreCase(tabName))
+                               .findFirst().orElseThrow().click();
+    }
+
+    public void clickOnTheSubTabServiceDropdownMenu(String subTabName) {
+        serviceSubTabsList.stream()
+                          .filter(serviceSubTabsList -> serviceSubTabsList.getText().equalsIgnoreCase(subTabName))
+                          .findFirst().orElseThrow().click();
     }
 
     public void clickOnTheUserTableMenuItemInDropdownMenu() {
