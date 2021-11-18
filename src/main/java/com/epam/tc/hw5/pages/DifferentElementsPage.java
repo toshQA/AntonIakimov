@@ -19,7 +19,7 @@ public class DifferentElementsPage extends BasePage {
     @FindBy(className = "colors")
     private WebElement colorsDropdown;
 
-    @FindBy(tagName = "//option[text()='Yellow']")
+    @FindBy(xpath = "//option[text()='Yellow']")
     private WebElement yellowItemInDropdown;
 
     @FindBy(xpath = "//ul[contains(@class, 'logs')]/li")
