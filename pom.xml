@@ -23,6 +23,7 @@
     <allure.version>2.16.1</allure.version>
     <aspectj.version>1.9.5</aspectj.version>
     <cucumber.version>7.0.0</cucumber.version>
+    <allure.maven>2.10.0</allure.maven>
   </properties>
 
 
@@ -65,6 +66,17 @@
       <groupId>io.qameta.allure</groupId>
       <artifactId>allure-testng</artifactId>
       <version>${allure.version}</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.testng</groupId>
+          <artifactId>testng</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>io.qameta.allure</groupId>
+          <artifactId>allure-java-commons</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
@@ -79,10 +91,27 @@
       <version>${cucumber.version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>com.epam.jdi</groupId>
+      <artifactId>jdi-light-html</artifactId>
+      <version>RELEASE</version>
+    </dependency>
+
   </dependencies>
 
   <build>
     <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>10</source>
+          <target>10</target>
+        </configuration>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
@@ -125,7 +154,7 @@
             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
           </argLine>
           <suiteXmlFiles>
-            <suiteXmlFile>${project.basedir}/src/test/resources/com.epam.tc.hw6/${suite.xml.name}</suiteXmlFile>
+            <suiteXmlFile>${project.basedir}/src/test/resources/com.epam.tc.hw7/${suite.xml.name}</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
         <dependencies>
@@ -136,6 +165,16 @@
           </dependency>
         </dependencies>
       </plugin>
+
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>${allure.maven}</version>
+        <configuration>
+          <reportVersion>2.10.0</reportVersion>
+        </configuration>
+      </plugin>
+
     </plugins>
   </build>
 
@@ -184,6 +223,12 @@
     </profile>
     <profile>
       <id>hw6-all-exercises-test-suite</id>
+      <properties>
+        <suite.xml.name>AllExercisesTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+    <profile>
+      <id>hw7-all-exercises-test-suite</id>
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>
