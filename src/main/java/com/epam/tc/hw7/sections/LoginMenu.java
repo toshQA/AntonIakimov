@@ -29,5 +29,4 @@ public class LoginMenu extends Section {
         loginForm.submit(new User(), "enter");
     }
 
-
 }

@@ -1,18 +1,30 @@
 package com.epam.tc.hw7.tests;
 
 import static com.epam.tc.hw7.SiteJDI.homePage;
+import static com.epam.tc.hw7.pages.MetalsAndColorsPage.metalsAndColorsForm;
+import static org.testng.Assert.assertTrue;
 
 import com.epam.jdi.light.elements.composite.WebPage;
+import com.epam.tc.hw7.MetalsAndColorsDataProvider;
+import com.epam.tc.hw7.entities.MetalsAndColors;
 import com.epam.tc.hw7.utils.HeaderTabs;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class MetalsAndColorPageTests implements TestInit {
 
-    @Test
+    @BeforeMethod
     public void openMetalsAndColorsPage() {
         homePage.header.openPage(HeaderTabs.MetalsAndColors);
         WebPage.checkUrl("https://jdi-testing.github.io/jdi-light/metals-colors.html");
     }
+
+    @Test(dataProviderClass = MetalsAndColorsDataProvider.class, dataProvider = "Metals And Colors Provider")
+    public void submitMetalsAndColorsFormTest(MetalsAndColors metalsAndColors) {
+        System.out.println(metalsAndColors);
+    }
+
 
 
 
