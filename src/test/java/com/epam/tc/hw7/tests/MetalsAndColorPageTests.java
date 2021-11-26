@@ -2,13 +2,13 @@ package com.epam.tc.hw7.tests;
 
 import static com.epam.tc.hw7.SiteJDI.homePage;
 import static com.epam.tc.hw7.pages.MetalsAndColorsPage.metalsAndColorsForm;
-import static org.testng.Assert.assertTrue;
+import static com.epam.tc.hw7.pages.MetalsAndColorsPage.results;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import com.epam.jdi.light.elements.composite.WebPage;
 import com.epam.tc.hw7.MetalsAndColorsDataProvider;
 import com.epam.tc.hw7.entities.MetalsAndColors;
 import com.epam.tc.hw7.utils.HeaderTabs;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -22,11 +22,11 @@ public class MetalsAndColorPageTests implements TestInit {
 
     @Test(dataProviderClass = MetalsAndColorsDataProvider.class, dataProvider = "Metals And Colors Provider")
     public void submitMetalsAndColorsFormTest(MetalsAndColors metalsAndColors) {
-        System.out.println(metalsAndColors);
+        metalsAndColorsForm.fill(metalsAndColors);
+        metalsAndColorsForm.submit();
+        assertThat(metalsAndColors.toListString()).isEqualTo(results.getResults());
+        System.out.println(results.getResults());
     }
-
-
-
 
 
 }

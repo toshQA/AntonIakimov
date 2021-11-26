@@ -6,19 +6,19 @@ import static com.epam.tc.hw7.SiteJDI.homePage;
 import static com.epam.tc.hw7.states.States.loggedIn;
 
 import com.epam.tc.hw7.SiteJDI;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 public interface TestInit {
 
-    @BeforeMethod
+    @BeforeTest
     static void setUp() {
         initElements(SiteJDI.class);
         loggedIn();
         homePage.shouldBeOpened();
     }
 
-    @AfterMethod
+    @AfterTest
     static void tearDown() {
         killAllSeleniumDrivers();
     }
