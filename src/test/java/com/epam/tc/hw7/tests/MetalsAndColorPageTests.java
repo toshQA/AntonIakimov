@@ -24,8 +24,7 @@ public class MetalsAndColorPageTests implements TestInit {
     public void submitMetalsAndColorsFormTest(MetalsAndColors metalsAndColors) {
         metalsAndColorsForm.fill(metalsAndColors);
         metalsAndColorsForm.submit();
-        assertThat(metalsAndColors.toListString()).isEqualTo(results.getResults());
-        System.out.println(results.getResults());
+        assertThat(results.getResults()).isEqualTo(metalsAndColors.toListString());
     }
 
 

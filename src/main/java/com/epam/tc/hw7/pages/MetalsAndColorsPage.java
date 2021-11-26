@@ -13,6 +13,6 @@ public class MetalsAndColorsPage extends BasePage {
     @UI(".main-content-hg")
     public static MetalsAndColorsForm metalsAndColorsForm;
 
-    @UI(".panel-body-list.results li")
+    @UI(".panel-body-list.results")
     public static Results results;
 }

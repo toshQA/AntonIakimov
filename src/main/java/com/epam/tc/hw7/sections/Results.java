@@ -8,10 +8,11 @@ import org.openqa.selenium.WebElement;
 
 public class Results extends Section {
 
-    @UI("//ul[@class='panel-body-list results']/li")
+    @UI(".panel-body-list.results li")
     public static List<WebElement> resultList;
 
     public static List<String> getResults() {
+        System.out.println(resultList.size());
         return resultList.stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
