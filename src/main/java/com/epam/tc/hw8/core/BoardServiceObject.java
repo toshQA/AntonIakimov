@@ -7,7 +7,6 @@ import static com.epam.tc.hw8.conatants.BoardConstants.ID;
 import static com.epam.tc.hw8.conatants.BoardConstants.ID_ENTERPRISE;
 import static com.epam.tc.hw8.conatants.BoardConstants.ID_ORGANIZATION;
 import static com.epam.tc.hw8.conatants.BoardConstants.NAME;
-import static com.epam.tc.hw8.utils.TestProperties.getProperty;
 
 import com.epam.tc.hw8.beans.Board;
 import com.google.gson.Gson;
@@ -15,7 +14,6 @@ import com.google.gson.reflect.TypeToken;
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
-import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 

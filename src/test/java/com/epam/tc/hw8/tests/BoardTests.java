@@ -3,7 +3,6 @@ package com.epam.tc.hw8.tests;
 import static com.epam.tc.hw8.conatants.BoardConstants.BOARD_DESC;
 import static com.epam.tc.hw8.conatants.BoardConstants.BOARD_NAME;
 import static com.epam.tc.hw8.conatants.BoardConstants.NEW_BOARD_NAME;
-import static com.epam.tc.hw8.steps.BoardSteps.createBoard;
 import static com.epam.tc.hw8.steps.BoardSteps.getBoard;
 import static com.epam.tc.hw8.steps.BoardSteps.updateBoardName;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -28,5 +27,4 @@ public class BoardTests extends BaseTests {
         updateBoardName(NEW_BOARD_NAME, id);
         assertThat(getBoard(id).getName(), equalToIgnoringCase(NEW_BOARD_NAME));
     }
-
 }

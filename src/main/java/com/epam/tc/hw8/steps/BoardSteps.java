@@ -1,7 +1,5 @@
 package com.epam.tc.hw8.steps;
 
-import static com.epam.tc.hw8.conatants.BoardConstants.BOARD_NAME;
-import static com.epam.tc.hw8.core.BasicTrelloServiceObject.goodResponseSpecification;
 import static com.epam.tc.hw8.core.BoardServiceObject.BOARD_TRELLO_URI;
 import static com.epam.tc.hw8.core.BoardServiceObject.boardRequestBuilder;
 import static com.epam.tc.hw8.core.BoardServiceObject.getBoardObject;

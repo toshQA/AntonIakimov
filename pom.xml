@@ -183,7 +183,7 @@
             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
           </argLine>
           <suiteXmlFiles>
-            <suiteXmlFile>${project.basedir}/src/test/resources/com.epam.tc.hw7/${suite.xml.name}</suiteXmlFile>
+            <suiteXmlFile>${project.basedir}/src/test/resources/com.epam.tc.hw8/${suite.xml.name}</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
         <dependencies>
