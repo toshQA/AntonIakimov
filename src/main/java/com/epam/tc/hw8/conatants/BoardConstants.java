@@ -12,5 +12,8 @@ public class BoardConstants {
     public static final String URL = "url";
     public static final String SHORT_URL = "shortUrl";
     public static final String BOARD_NAME = "Test board";
+    public static final String BOARD_DESC = "Test description";
+    public static final String NEW_BOARD_NAME = "Updated board name";
+
 
 }

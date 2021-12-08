@@ -7,6 +7,7 @@ import static com.epam.tc.hw8.conatants.BoardConstants.ID;
 import static com.epam.tc.hw8.conatants.BoardConstants.ID_ENTERPRISE;
 import static com.epam.tc.hw8.conatants.BoardConstants.ID_ORGANIZATION;
 import static com.epam.tc.hw8.conatants.BoardConstants.NAME;
+import static com.epam.tc.hw8.utils.TestProperties.getProperty;
 
 import com.epam.tc.hw8.beans.Board;
 import com.google.gson.Gson;
@@ -14,10 +15,13 @@ import com.google.gson.reflect.TypeToken;
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
+import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
 public class BoardServiceObject extends BasicTrelloServiceObject {
+
+    public static final String BOARD_TRELLO_URI = "boards/";
 
     public BoardServiceObject(Method method, Map<String, String> queryParams) {
         super(method, queryParams);
@@ -76,11 +80,11 @@ public class BoardServiceObject extends BasicTrelloServiceObject {
         }
     }
 
-    public Response sendRequest() {
+    public Response sendRequest(String endpoint) {
         return RestAssured
             .given(requestSpecification()).log().all()
             .queryParams(queryParams)
-            .request(requestMethod, BASE_TRELLO_URI)
+            .request(requestMethod, BASE_TRELLO_URI + endpoint)
             .prettyPeek();
     }
 

@@ -29,8 +29,9 @@ public class BasicTrelloServiceObject {
 
     public static RequestSpecification requestSpecification() {
         return new RequestSpecBuilder()
-            .addParam(KEY, getProperty("key"))
-            .addParam(TOKEN, getProperty("token"))
+            .setContentType(ContentType.JSON)
+            .addQueryParam(KEY, getProperty("key"))
+            .addQueryParam(TOKEN, getProperty("token"))
             .setBaseUri(BASE_TRELLO_URI)
             .build();
     }
