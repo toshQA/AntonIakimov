@@ -6,6 +6,7 @@ import static com.epam.tc.hw8.conatants.BoardConstants.NAME;
 import static com.epam.tc.hw8.core.BoardServiceObject.BOARD_TRELLO_URI;
 import static com.epam.tc.hw8.core.BoardServiceObject.boardRequestBuilder;
 import static com.epam.tc.hw8.core.BoardServiceObject.getBoardObject;
+import static com.epam.tc.hw8.core.BoardServiceObject.randomString;
 import static com.epam.tc.hw8.steps.BoardSteps.closeBoard;
 import static com.epam.tc.hw8.steps.BoardSteps.createBoard;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -44,15 +45,23 @@ public class BoardTests extends BaseTests {
     @Test
     public void createBasedBoardTest() {
         Board board = createBoard(NAME);
+        String randomDesc = randomString();
         Response response = boardRequestBuilder()
+            .setMethod(Method.PUT)
+            .setDesc(randomDesc)
+            .buildRequest()
+            .sendRequest(BOARD_TRELLO_URI + board.getId());
+        String desc = getBoardObject(response).getDesc();
+
+        Response response2 = boardRequestBuilder()
             .setMethod(Method.POST)
             .setName(NAME)
             .setIdBoardSource(board.getId())
             .buildRequest()
             .sendRequest(BOARD_TRELLO_URI);
-        Board basedBoard = getBoardObject(response);
+        Board basedBoard = getBoardObject(response2);
 
-        assertThat(basedBoard.getIdBoardSource(), equalTo(board.getId()));
+        assertThat(basedBoard.getDesc(), equalTo(desc));
     }
 
     @Test
@@ -71,8 +80,7 @@ public class BoardTests extends BaseTests {
     @Test
     public void updateClosedBoard() {
         String boardId = createBoard(NAME).getId();
-        RandomString random = new RandomString();
-        String randomName = random.nextString();
+        String randomName = randomString();
         closeBoard(boardId);
         Response response = boardRequestBuilder()
             .setMethod(Method.PUT)

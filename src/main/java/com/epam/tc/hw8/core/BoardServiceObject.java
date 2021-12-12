@@ -17,6 +17,7 @@ import io.restassured.http.Method;
 import io.restassured.response.Response;
 import java.util.HashMap;
 import java.util.Map;
+import net.bytebuddy.utility.RandomString;
 
 public class BoardServiceObject extends BasicTrelloServiceObject {
 
@@ -95,5 +96,10 @@ public class BoardServiceObject extends BasicTrelloServiceObject {
 
     public static Board getBoardObject(Response response) {
         return new Gson().fromJson(response.asString().trim(), new TypeToken<Board>() {}.getType());
+    }
+
+    public static String randomString() {
+        RandomString random = new RandomString();
+        return random.nextString();
     }
 }
