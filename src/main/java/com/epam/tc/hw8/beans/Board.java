@@ -45,6 +45,10 @@ public class Board {
     @Expose
     private String shortUrl;
 
+    @SerializedName("idBoardSource")
+    @Expose
+    private String idBoardSource;
+
     public String getId() {
         return id;
     }
@@ -125,6 +129,14 @@ public class Board {
         this.shortUrl = shortUrl;
     }
 
+    public String getIdBoardSource() {
+        return idBoardSource;
+    }
+
+    public void setIdBoardSource(String idBoardSource) {
+        this.idBoardSource = idBoardSource;
+    }
+
     @SuppressWarnings("checkstyle:WhitespaceAround")
     @Override
     public String toString() {
@@ -171,6 +183,9 @@ public class Board {
         sb.append('=');
         sb.append(((this.shortUrl == null) ? "<null>" : this.shortUrl));
         sb.append(',');
+        sb.append('=');
+        sb.append(((this.idBoardSource == null) ? "<null>" : this.idBoardSource));
+        sb.append(',');
         if (sb.charAt((sb.length() - 1)) == ',') {
             sb.setCharAt((sb.length() - 1), ']');
         } else {
@@ -192,6 +207,7 @@ public class Board {
         result = ((result * 31) + ((this.pinned == null) ? 0 : this.pinned.hashCode()));
         result = ((result * 31) + ((this.url == null) ? 0 : this.url.hashCode()));
         result = ((result * 31) + ((this.shortUrl == null) ? 0 : this.shortUrl.hashCode()));
+        result = ((result * 31) + ((this.idBoardSource == null) ? 0 : this.idBoardSource.hashCode()));
         return result;
     }
 
@@ -204,7 +220,7 @@ public class Board {
             return false;
         }
         Board rhs = ((Board) other);
-        return ((((((((((this.id == rhs.id) || ((this.id != null) && this.id.equals(rhs.id)))
+        return (((((((((((this.id == rhs.id) || ((this.id != null) && this.id.equals(rhs.id)))
             && ((this.name == rhs.name) || ((this.name != null) && this.name.equals(rhs.name))))
             && ((this.desc == rhs.desc) || ((this.desc != null) && this.desc.equals(rhs.desc))))
             && ((this.descData == rhs.descData) || ((this.descData != null) && this.descData.equals(rhs.desc))))
@@ -215,7 +231,9 @@ public class Board {
             && this.idEnterprise.equals(rhs.idEnterprise))))
             && ((this.pinned == rhs.pinned) || ((this.pinned != null) && this.pinned.equals(rhs.pinned))
             && ((this.url == rhs.url) || ((this.url != null) && this.url.equals(rhs.url))))
-            && ((this.shortUrl == rhs.shortUrl) || ((this.shortUrl != null) && this.shortUrl.equals(rhs.shortUrl)))));
+            && ((this.shortUrl == rhs.shortUrl) || ((this.shortUrl != null) && this.shortUrl.equals(rhs.shortUrl)))
+            && ((this.idBoardSource == rhs.idBoardSource) || ((this.idBoardSource != null)
+            && this.idBoardSource.equals(rhs.idBoardSource))))));
     }
 
 }

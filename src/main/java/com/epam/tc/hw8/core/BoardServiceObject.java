@@ -4,6 +4,7 @@ import static com.epam.tc.hw8.conatants.BoardConstants.CLOSED;
 import static com.epam.tc.hw8.conatants.BoardConstants.DESC;
 import static com.epam.tc.hw8.conatants.BoardConstants.DESC_DATA;
 import static com.epam.tc.hw8.conatants.BoardConstants.ID;
+import static com.epam.tc.hw8.conatants.BoardConstants.ID_BOARD_SOURCE;
 import static com.epam.tc.hw8.conatants.BoardConstants.ID_ENTERPRISE;
 import static com.epam.tc.hw8.conatants.BoardConstants.ID_ORGANIZATION;
 import static com.epam.tc.hw8.conatants.BoardConstants.NAME;
@@ -20,6 +21,7 @@ import java.util.Map;
 public class BoardServiceObject extends BasicTrelloServiceObject {
 
     public static final String BOARD_TRELLO_URI = "boards/";
+    public static final String ME_TRELLO_URI = "members/me/";
 
     public BoardServiceObject(Method method, Map<String, String> queryParams) {
         super(method, queryParams);
@@ -70,6 +72,11 @@ public class BoardServiceObject extends BasicTrelloServiceObject {
 
         public BoardRequestBuilder setIdEnterprise(String idEnterprise) {
             queryParams.put(ID_ENTERPRISE, idEnterprise);
+            return this;
+        }
+
+        public BoardRequestBuilder setIdBoardSource(String idBoardSource) {
+            queryParams.put(ID_BOARD_SOURCE, idBoardSource);
             return this;
         }
 

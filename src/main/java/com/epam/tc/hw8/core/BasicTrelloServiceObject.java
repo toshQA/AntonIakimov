@@ -44,11 +44,11 @@ public class BasicTrelloServiceObject {
             .build();
     }
 
-    public static ResponseSpecification notFoundResponseSpecification() {
+    public static ResponseSpecification badRequestResponseSpecification() {
         return new ResponseSpecBuilder()
             .expectContentType(ContentType.TEXT)
             .expectResponseTime(lessThan(10000L))
-            .expectStatusCode(HttpStatus.SC_NOT_FOUND)
+            .expectStatusCode(HttpStatus.SC_BAD_REQUEST)
             .build();
     }
 
