@@ -6,6 +6,7 @@ import static com.epam.tc.hw8.core.BoardServiceObject.boardRequestBuilder;
 import static com.epam.tc.hw8.core.BoardServiceObject.getBoardObject;
 
 import com.epam.tc.hw8.beans.Board;
+import com.epam.tc.hw8.conatants.BoardConstants;
 import io.qameta.allure.Step;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
@@ -14,10 +15,10 @@ import java.util.List;
 public class BoardSteps {
 
     @Step("Create Board")
-    public static Board createBoard(String name) {
+    public static Board createBoard() {
         Response response = boardRequestBuilder()
             .setMethod(Method.POST)
-            .setName(name)
+            .setName(BoardConstants.NAME)
             .buildRequest()
             .sendRequest(BOARD_TRELLO_URI);
         return getBoardObject(response);

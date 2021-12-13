@@ -15,9 +15,7 @@ import static org.hamcrest.Matchers.equalTo;
 import com.epam.tc.hw8.beans.Board;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.http.HttpStatus;
-import org.assertj.core.internal.bytebuddy.utility.RandomString;
 import org.testng.annotations.Test;
 
 public class BoardTests extends BaseTests {
@@ -44,7 +42,7 @@ public class BoardTests extends BaseTests {
 
     @Test
     public void createBasedBoardTest() {
-        Board board = createBoard(NAME);
+        Board board = createBoard();
         String randomDesc = randomString();
         Response response = boardRequestBuilder()
             .setMethod(Method.PUT)
@@ -55,7 +53,7 @@ public class BoardTests extends BaseTests {
 
         Response response2 = boardRequestBuilder()
             .setMethod(Method.POST)
-            .setName(NAME)
+            .setName(randomString())
             .setIdBoardSource(board.getId())
             .buildRequest()
             .sendRequest(BOARD_TRELLO_URI);
@@ -66,7 +64,7 @@ public class BoardTests extends BaseTests {
 
     @Test
     public void closeClosedBoardTest() {
-        String boardId = createBoard(NAME).getId();
+        String boardId = createBoard().getId();
         closeBoard(boardId);
         Response response2 = boardRequestBuilder()
             .setMethod(Method.PUT)
@@ -79,7 +77,7 @@ public class BoardTests extends BaseTests {
 
     @Test
     public void updateClosedBoard() {
-        String boardId = createBoard(NAME).getId();
+        String boardId = createBoard().getId();
         String randomName = randomString();
         closeBoard(boardId);
         Response response = boardRequestBuilder()
