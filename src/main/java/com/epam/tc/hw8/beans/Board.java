@@ -17,10 +17,6 @@ public class Board {
     @Expose
     private String desc;
 
-    @SerializedName("descData")
-    @Expose
-    private String descData;
-
     @SerializedName("closed")
     @Expose
     private String closed;
@@ -71,14 +67,6 @@ public class Board {
 
     public void setDesc(String desc) {
         this.desc = desc;
-    }
-
-    public String getDescData() {
-        return descData;
-    }
-
-    public void setDescData(String descData) {
-        this.descData = descData;
     }
 
     public String getClosed() {
@@ -155,10 +143,6 @@ public class Board {
         sb.append('=');
         sb.append(((this.desc == null) ? "<null>" : this.desc));
         sb.append(',');
-        sb.append("descData");
-        sb.append('=');
-        sb.append(((this.descData == null) ? "<null>" : this.desc));
-        sb.append(',');
         sb.append("closed");
         sb.append('=');
         sb.append(((this.closed == null) ? "<null>" : this.closed));
@@ -200,7 +184,6 @@ public class Board {
         result = ((result * 31) + ((this.id == null) ? 0 : this.id.hashCode()));
         result = ((result * 31) + ((this.name == null) ? 0 : this.name.hashCode()));
         result = ((result * 31) + ((this.desc == null) ? 0 : this.desc.hashCode()));
-        result = ((result * 31) + ((this.descData == null) ? 0 : this.descData.hashCode()));
         result = ((result * 31) + ((this.closed == null) ? 0 : this.closed.hashCode()));
         result = ((result * 31) + ((this.idOrganization == null) ? 0 : this.idOrganization.hashCode()));
         result = ((result * 31) + ((this.idEnterprise == null) ? 0 : this.idEnterprise.hashCode()));
@@ -220,10 +203,9 @@ public class Board {
             return false;
         }
         Board rhs = ((Board) other);
-        return (((((((((((this.id == rhs.id) || ((this.id != null) && this.id.equals(rhs.id)))
+        return ((((((((((this.id == rhs.id) || ((this.id != null) && this.id.equals(rhs.id)))
             && ((this.name == rhs.name) || ((this.name != null) && this.name.equals(rhs.name))))
             && ((this.desc == rhs.desc) || ((this.desc != null) && this.desc.equals(rhs.desc))))
-            && ((this.descData == rhs.descData) || ((this.descData != null) && this.descData.equals(rhs.desc))))
             && ((this.closed == rhs.closed) || ((this.closed != null) && this.closed.equals(rhs.closed))))
             && ((this.idOrganization == rhs.idOrganization) || ((this.idOrganization != null)
             && this.idOrganization.equals(rhs.idOrganization))))
@@ -235,5 +217,4 @@ public class Board {
             && ((this.idBoardSource == rhs.idBoardSource) || ((this.idBoardSource != null)
             && this.idBoardSource.equals(rhs.idBoardSource))))));
     }
-
 }

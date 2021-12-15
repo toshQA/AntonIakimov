@@ -201,7 +201,4 @@ public class BoardConstants {
         + " Quisque ut nisi. Donec mi odio, faucibus at, scelerisque quis, convallis in, nisi."
         + " Suspendisse non nisl sit amet velit hendrerit rutrum. Ut leo. Ut a nisl id ante tempus hendrerit."
         + " Proin pretium, leo ac pellentesque mollis, felis.\n";
-
-
-
 }

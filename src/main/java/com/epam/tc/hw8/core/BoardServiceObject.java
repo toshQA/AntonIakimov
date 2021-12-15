@@ -2,7 +2,6 @@ package com.epam.tc.hw8.core;
 
 import static com.epam.tc.hw8.conatants.BoardConstants.CLOSED;
 import static com.epam.tc.hw8.conatants.BoardConstants.DESC;
-import static com.epam.tc.hw8.conatants.BoardConstants.DESC_DATA;
 import static com.epam.tc.hw8.conatants.BoardConstants.ID;
 import static com.epam.tc.hw8.conatants.BoardConstants.ID_BOARD_SOURCE;
 import static com.epam.tc.hw8.conatants.BoardConstants.ID_ENTERPRISE;
@@ -56,11 +55,6 @@ public class BoardServiceObject extends BasicTrelloServiceObject {
             return this;
         }
 
-        public BoardRequestBuilder setDescData(String descData) {
-            queryParams.put(DESC_DATA, descData);
-            return this;
-        }
-
         public BoardRequestBuilder setClosed(String closed) {
             queryParams.put(CLOSED, closed);
             return this;
@@ -95,7 +89,8 @@ public class BoardServiceObject extends BasicTrelloServiceObject {
     }
 
     public static Board getBoardObject(Response response) {
-        return new Gson().fromJson(response.asString().trim(), new TypeToken<Board>() {}.getType());
+        return new Gson().fromJson(response.asString().trim(), new TypeToken<Board>() {
+        }.getType());
     }
 
     public static String randomString() {

@@ -2,7 +2,6 @@ package com.epam.tc.hw8.tests;
 
 import static com.epam.tc.hw8.conatants.BoardConstants.BLANK_BOARD_NAME;
 import static com.epam.tc.hw8.conatants.BoardConstants.LONG_BOARD_NAME;
-import static com.epam.tc.hw8.conatants.BoardConstants.NAME;
 import static com.epam.tc.hw8.core.BoardServiceObject.BOARD_TRELLO_URI;
 import static com.epam.tc.hw8.core.BoardServiceObject.boardRequestBuilder;
 import static com.epam.tc.hw8.core.BoardServiceObject.getBoardObject;
