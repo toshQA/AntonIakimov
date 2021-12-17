@@ -15,7 +15,8 @@ public class MetalsAndColorsDataProvider {
 
     @DataProvider(name = "Metals And Colors Provider")
     public static Object[][] getData() throws FileNotFoundException {
-        JsonElement jsonData = JsonParser.parseReader(new FileReader("src/test/resources/com.epam.tc.hw7/JDI_ex8_metalsColorsDataSet.json"));
+        JsonElement jsonData = JsonParser
+            .parseReader(new FileReader("src/test/resources/com.epam.tc.hw7/JDI_ex8_metalsColorsDataSet.json"));
         List<MetalsAndColors> testData = new ArrayList<>();
 
         for (Map.Entry<String, JsonElement> element : jsonData.getAsJsonObject().entrySet()) {

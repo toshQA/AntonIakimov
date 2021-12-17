@@ -24,6 +24,9 @@
     <aspectj.version>1.9.5</aspectj.version>
     <cucumber.version>7.0.0</cucumber.version>
     <allure.maven>2.10.0</allure.maven>
+    <rest-assure.version>4.4.0</rest-assure.version>
+    <hamcrest.version>2.2</hamcrest.version>
+    <gson.version>2.8.9</gson.version>
   </properties>
 
 
@@ -97,6 +100,32 @@
       <version>RELEASE</version>
     </dependency>
 
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>${rest-assure.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-core</artifactId>
+      <version>${hamcrest.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>${gson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>4.4.0</version>
+      <scope>compile</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -154,7 +183,7 @@
             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
           </argLine>
           <suiteXmlFiles>
-            <suiteXmlFile>${project.basedir}/src/test/resources/com.epam.tc.hw7/${suite.xml.name}</suiteXmlFile>
+            <suiteXmlFile>${project.basedir}/src/test/resources/com.epam.tc.hw8/${suite.xml.name}</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
         <dependencies>
@@ -229,6 +258,12 @@
     </profile>
     <profile>
       <id>hw7-all-exercises-test-suite</id>
+      <properties>
+        <suite.xml.name>AllExercisesTestSuite.xml</suite.xml.name>
+      </properties>
+    </profile>
+    <profile>
+      <id>hw8-all-exercises-test-suite</id>
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>

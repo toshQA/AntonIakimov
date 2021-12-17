@@ -3,7 +3,7 @@
 
   <test name="All Exercises Test">
     <packages>
-      <package name="com.epam.tc.hw7.tests" />
+      <package name="com.epam.tc.hw8.tests" />
     </packages>
   </test>
 
